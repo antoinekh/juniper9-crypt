@@ -6,13 +6,23 @@ The `$9$` algorithm is a proprietary Juniper substitution cipher. It is **determ
 
 > `$9$` is a substitution cipher, not real cryptography. Treat it as obfuscation, not protection. Anyone with this library (or the source of any Juniper device) can recover the plaintext.
 
+## Run without installing
+
+If you have [uv](https://github.com/astral-sh/uv) installed, `uvx` runs the CLI without installing anything:
+
+```bash
+uvx juniper9-crypt --decrypt '$9$FNkC3/t1IcevLuOWx'
+```
+
+> **Don't have `uv` yet?** Get it. It's the best thing to happen to Python tooling in years.
+
 ## Install
 
 ```bash
 pip install juniper9-crypt
 ```
 
-Or with [uv](https://github.com/astral-sh/uv):
+Or with `uv`:
 
 ```bash
 uv add juniper9-crypt
