@@ -2,7 +2,7 @@
 
 import pytest
 
-from juniper9_crypt import MAGIC, check, decrypt, encrypt, main
+from juniper9_crypt import MAGIC, __version__, check, decrypt, encrypt, main
 
 
 KNOWN_VECTORS = [
@@ -20,6 +20,7 @@ ROUNDTRIP_PLAINTEXTS = [
     "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
     "0123456789",
     "!@#$%^&*()_+-=[]{}|;':\",./<>?",
+    "café",
 ]
 
 
@@ -62,6 +63,16 @@ def test_decrypt_invalid_payload_char() -> None:
         decrypt("$9$Q~~~~~~~~~~~~~~~~~")
 
 
+def test_decrypt_truncated_ciphertext() -> None:
+    with pytest.raises(ValueError, match="[Tt]runcated"):
+        decrypt(encrypt("hello")[:-1])
+
+
+def test_encrypt_rejects_non_latin1() -> None:
+    with pytest.raises(ValueError, match="single-byte"):
+        encrypt("€")
+
+
 def test_check_against_plaintext() -> None:
     _, _, match = check(encrypt("s3cr3t"), "s3cr3t")
     assert match
@@ -100,3 +111,30 @@ def test_cli_invalid_input_exits_two(capsys: pytest.CaptureFixture[str]) -> None
     rc = main(["--decrypt", "plaintext"])
     assert rc == 2
     assert "error" in capsys.readouterr().err
+
+
+def test_cli_encrypt_roundtrips(capsys: pytest.CaptureFixture[str]) -> None:
+    rc = main(["--encrypt", "hello"])
+    assert rc == 0
+    assert decrypt(capsys.readouterr().out.strip()) == "hello"
+
+
+def test_cli_encrypt_empty_string(capsys: pytest.CaptureFixture[str]) -> None:
+    rc = main(["--encrypt", ""])
+    assert rc == 0
+    out = capsys.readouterr().out.strip()
+    assert out.startswith(MAGIC)
+    assert decrypt(out) == ""
+
+
+def test_cli_decrypt_empty_string_exits_two(capsys: pytest.CaptureFixture[str]) -> None:
+    rc = main(["--decrypt", ""])
+    assert rc == 2
+    assert "error" in capsys.readouterr().err
+
+
+def test_cli_version(capsys: pytest.CaptureFixture[str]) -> None:
+    with pytest.raises(SystemExit) as exc:
+        main(["--version"])
+    assert exc.value.code == 0
+    assert __version__ in capsys.readouterr().out

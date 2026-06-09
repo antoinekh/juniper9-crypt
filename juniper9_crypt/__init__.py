@@ -21,8 +21,9 @@ from __future__ import annotations
 import argparse
 import random
 import sys
+from importlib.metadata import version
 
-__version__ = "0.1.0"
+__version__ = version("juniper9-crypt")
 
 __all__ = ["decrypt", "encrypt", "check", "__version__"]
 
@@ -54,6 +55,8 @@ def decrypt(ciphertext: str) -> str:
     while chars:
         weights = ENCODING[len(result) % len(ENCODING)]
         nibble = chars[: len(weights)]
+        if len(nibble) < len(weights):
+            raise ValueError("Truncated $9$ ciphertext: incomplete final character group")
         chars = chars[len(weights):]
         val = 0
         for c, w in zip(nibble, weights):
@@ -82,6 +85,10 @@ def encrypt(plaintext: str) -> str:
     for i, ch in enumerate(plaintext):
         weights = ENCODING[i % len(ENCODING)]
         val = ord(ch)
+        if val > 255:
+            raise ValueError(
+                f"Character {ch!r} cannot be $9$-encoded: only single-byte (Latin-1) characters are supported"
+            )
         gaps: list[int] = []
         for w in reversed(weights):
             gaps.append(val // w)
@@ -122,11 +129,11 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     try:
-        if args.decrypt:
+        if args.decrypt is not None:
             print(decrypt(args.decrypt))
-        elif args.encrypt:
+        elif args.encrypt is not None:
             print(encrypt(args.encrypt))
-        elif args.check:
+        elif args.check is not None:
             plain_a, plain_b, match = check(*args.check)
             print(f"Value 1   : {plain_a!r}")
             print(f"Value 2   : {plain_b!r}")

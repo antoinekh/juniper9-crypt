@@ -1,8 +1,13 @@
 # juniper9-crypt
 
+[![tests](https://github.com/antoinekh/juniper9-crypt/actions/workflows/test.yml/badge.svg)](https://github.com/antoinekh/juniper9-crypt/actions/workflows/test.yml)
+[![PyPI](https://img.shields.io/pypi/v/juniper9-crypt)](https://pypi.org/project/juniper9-crypt/)
+[![Python versions](https://img.shields.io/pypi/pyversions/juniper9-crypt)](https://pypi.org/project/juniper9-crypt/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
 Encrypt and decrypt Juniper `$9$` reversible passwords, from the command line or Python.
 
-The `$9$` algorithm is a proprietary Juniper substitution cipher. It is **deterministic and device-independent**: a password encrypted on one Juniper device can be decrypted on any other, with no node-specific secret involved. The algorithm and its character set are publicly documented.
+The `$9$` algorithm is a proprietary Juniper substitution cipher. It is **keyless and device-independent**: a password encrypted on one Juniper device can be decrypted on any other, with no node-specific secret involved. The algorithm and its character set are publicly documented.
 
 > `$9$` is a substitution cipher, not real cryptography. Treat it as obfuscation, not protection. Anyone with this library (or the source of any Juniper device) can recover the plaintext.
 
@@ -54,7 +59,7 @@ juniper9-crypt --check '$9$FNkC3/t1IcevLuOWx' '$9$o1aGiPfz/Cuk.tO'
 
 ### Example output
 
-```
+```console
 $ juniper9-crypt --decrypt '$9$FNkC3/t1IcevLuOWx'
 hello
 
@@ -96,7 +101,7 @@ assert match is True
 
 ### Error handling
 
-`decrypt()` raises `ValueError` for malformed inputs:
+`decrypt()` raises `ValueError` for malformed inputs (missing `$9$` prefix, characters outside the alphabet, truncated ciphertext). `encrypt()` raises `ValueError` for plaintext containing characters outside Latin-1, which the cipher cannot represent:
 
 ```python
 from juniper9_crypt import decrypt
