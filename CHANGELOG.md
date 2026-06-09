@@ -7,6 +7,7 @@
 ### Changed
 
 - Converted the single module to a `juniper9_crypt` package shipping a `py.typed` marker, so type checkers pick up the type annotations (PEP 561).
+- Improved the algorithm diagram (dark-mode readability, ciphertext anatomy) and made it render on the PyPI page.
 - `__version__` is now derived from package metadata; the version is maintained only in `pyproject.toml`.
 - The publish workflow refuses to run when the release tag does not match the version in `pyproject.toml`.
 

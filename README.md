@@ -130,7 +130,7 @@ I'm not nearly smart enough to have reverse-engineered Juniper's `$9$` cipher on
 
 ## Algorithm
 
-![Juniper $9$ cipher overview](docs/juniper9-algorithm.svg)
+![Juniper $9$ cipher overview](https://raw.githubusercontent.com/antoinekh/juniper9-crypt/master/docs/juniper9-algorithm.svg)
 
 `$9$` is a position-based substitution cipher with three moving parts: a fixed 65-character alphabet split into families, a fixed weight table per output position, and a chain of "gaps" between successive alphabet positions.
 

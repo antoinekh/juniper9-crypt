@@ -1,7 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="680" viewBox="0 0 680 812">
+<svg xmlns="http://www.w3.org/2000/svg" width="680" viewBox="0 0 680 908">
 <title>Juniper $9$ cipher - how it works</title>
-<desc>Visual explanation of the Juniper $9$ reversible password obfuscation cipher: alphabet families, weight table, gap function, encryption flow, and a worked example.</desc>
-<defs><marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<desc>Visual explanation of the Juniper $9$ reversible password obfuscation cipher: alphabet families, weight table, gap function, encryption flow, a worked example, and the anatomy of a full $9$ value.</desc>
+<defs><marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#57606a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect x="0" y="0" width="680" height="908" fill="#ffffff" stroke="none"/>
 <rect x="0" y="0" width="680" height="62" rx="0" fill="#1f2328" stroke="none" stroke-width="0.5"/>
 <text x="340" y="22" text-anchor="middle" dominant-baseline="central" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,sans-serif" font-size="17" font-weight="600" fill="#ffffff">Juniper  $9$  cipher</text>
 <text x="340" y="44" text-anchor="middle" dominant-baseline="central" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,sans-serif" font-size="12" font-weight="normal" fill="#8c959f">position-based substitution cipher  ·  obfuscation, not real encryption</text>
@@ -39,28 +40,28 @@
 <rect x="251" y="149" width="178" height="22" rx="2" fill="#f6f8fa" stroke="none" stroke-width="0.5"/>
 <text x="259" y="160" text-anchor="start" dominant-baseline="central" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" font-weight="normal" fill="#57606a">pos 0</text>
 <text x="301" y="160" text-anchor="start" dominant-baseline="central" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" font-weight="normal" fill="#1f2328">1  4  32</text>
-<text x="427" y="160" text-anchor="end" dominant-baseline="central" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" font-weight="normal" fill="#8c959f">3c</text>
+<text x="427" y="160" text-anchor="end" dominant-baseline="central" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" font-weight="normal" fill="#8c959f">3 chars</text>
 <text x="259" y="183" text-anchor="start" dominant-baseline="central" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" font-weight="normal" fill="#57606a">pos 1</text>
 <text x="301" y="183" text-anchor="start" dominant-baseline="central" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" font-weight="normal" fill="#1f2328">1  16  32</text>
-<text x="427" y="183" text-anchor="end" dominant-baseline="central" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" font-weight="normal" fill="#8c959f">3c</text>
+<text x="427" y="183" text-anchor="end" dominant-baseline="central" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" font-weight="normal" fill="#8c959f">3 chars</text>
 <rect x="251" y="195" width="178" height="22" rx="2" fill="#f6f8fa" stroke="none" stroke-width="0.5"/>
 <text x="259" y="206" text-anchor="start" dominant-baseline="central" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" font-weight="normal" fill="#57606a">pos 2</text>
 <text x="301" y="206" text-anchor="start" dominant-baseline="central" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" font-weight="normal" fill="#1f2328">1  8  32</text>
-<text x="427" y="206" text-anchor="end" dominant-baseline="central" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" font-weight="normal" fill="#8c959f">3c</text>
+<text x="427" y="206" text-anchor="end" dominant-baseline="central" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" font-weight="normal" fill="#8c959f">3 chars</text>
 <text x="259" y="229" text-anchor="start" dominant-baseline="central" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" font-weight="normal" fill="#57606a">pos 3</text>
 <text x="301" y="229" text-anchor="start" dominant-baseline="central" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" font-weight="normal" fill="#1f2328">1  64</text>
-<text x="427" y="229" text-anchor="end" dominant-baseline="central" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" font-weight="normal" fill="#8c959f">2c</text>
+<text x="427" y="229" text-anchor="end" dominant-baseline="central" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" font-weight="normal" fill="#8c959f">2 chars</text>
 <rect x="251" y="241" width="178" height="22" rx="2" fill="#f6f8fa" stroke="none" stroke-width="0.5"/>
 <text x="259" y="252" text-anchor="start" dominant-baseline="central" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" font-weight="normal" fill="#57606a">pos 4</text>
 <text x="301" y="252" text-anchor="start" dominant-baseline="central" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" font-weight="normal" fill="#1f2328">1  32</text>
-<text x="427" y="252" text-anchor="end" dominant-baseline="central" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" font-weight="normal" fill="#8c959f">2c</text>
+<text x="427" y="252" text-anchor="end" dominant-baseline="central" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" font-weight="normal" fill="#8c959f">2 chars</text>
 <text x="259" y="275" text-anchor="start" dominant-baseline="central" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" font-weight="normal" fill="#57606a">pos 5</text>
 <text x="301" y="275" text-anchor="start" dominant-baseline="central" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" font-weight="normal" fill="#1f2328">1  4  16  128</text>
-<text x="427" y="275" text-anchor="end" dominant-baseline="central" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" font-weight="normal" fill="#8c959f">4c</text>
+<text x="427" y="275" text-anchor="end" dominant-baseline="central" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" font-weight="normal" fill="#8c959f">4 chars</text>
 <rect x="251" y="287" width="178" height="22" rx="2" fill="#f6f8fa" stroke="none" stroke-width="0.5"/>
 <text x="259" y="298" text-anchor="start" dominant-baseline="central" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" font-weight="normal" fill="#57606a">pos 6</text>
 <text x="301" y="298" text-anchor="start" dominant-baseline="central" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" font-weight="normal" fill="#1f2328">1  32  64</text>
-<text x="427" y="298" text-anchor="end" dominant-baseline="central" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" font-weight="normal" fill="#8c959f">3c</text>
+<text x="427" y="298" text-anchor="end" dominant-baseline="central" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" font-weight="normal" fill="#8c959f">3 chars</text>
 <text x="553" y="108" text-anchor="middle" dominant-baseline="central" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,sans-serif" font-size="13" font-weight="600" fill="#1f2328">Gap function</text>
 <text x="553" y="138" text-anchor="middle" dominant-baseline="central" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,sans-serif" font-size="10" font-weight="normal" fill="#57606a">differences, not positions</text>
 <rect x="464" y="150" width="178" height="44" rx="4" fill="#f6f8fa" stroke="#d0d7de" stroke-width="0.5"/>
@@ -103,8 +104,8 @@
 <text x="46" y="574" text-anchor="start" dominant-baseline="central" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11" font-weight="normal" fill="#1f2328">104  =  3×32 + 2×4 + 0×1    →    gaps:  [ g₀ = 0,   g₁ = 2,   g₂ = 3 ]</text>
 <rect x="30" y="596" width="616" height="96" rx="4" fill="#f6f8fa" stroke="#d0d7de" stroke-width="0.5"/>
 <text x="46" y="612" text-anchor="start" dominant-baseline="central" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,sans-serif" font-size="11" font-weight="600" fill="#1f2328">③ Advance through ALPHA  (random start char = Q, index 0)</text>
-<rect x="66" y="635" width="34" height="34" rx="5" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
-<text x="83" y="652" text-anchor="middle" dominant-baseline="central" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="17" font-weight="700" fill="#1f2328">Q</text>
+<rect x="66" y="635" width="34" height="34" rx="5" fill="#fff0ed" stroke="#ffc1b2" stroke-width="1"/>
+<text x="83" y="652" text-anchor="middle" dominant-baseline="central" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="17" font-weight="700" fill="#9a3520">Q</text>
 <text x="83" y="674" text-anchor="middle" dominant-baseline="central" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,sans-serif" font-size="9" font-weight="normal" fill="#57606a">start</text>
 <text x="83" y="686" text-anchor="middle" dominant-baseline="central" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,sans-serif" font-size="9" font-weight="normal" fill="#57606a">(idx 0)</text>
 <line x1="102" y1="652" x2="168" y2="652" stroke="#57606a" stroke-width="1.2" marker-end="url(#arr)"/>
@@ -125,6 +126,21 @@
 <rect x="30" y="700" width="616" height="46" rx="4" fill="#dafbe1" stroke="#82e49a" stroke-width="0.5"/>
 <text x="46" y="714" text-anchor="start" dominant-baseline="central" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,sans-serif" font-size="11" font-weight="600" fill="#1a7f37">④ Output</text>
 <text x="46" y="732" text-anchor="start" dominant-baseline="central" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11" font-weight="normal" fill="#1a7f37">ciphertext:  'znC'    ·    verify decrypt:  0×1 + 2×4 + 3×32  =  0+8+96  =  104  =  'h'  ✓</text>
-<rect x="30" y="754" width="616" height="38" rx="4" fill="#fff3cd" stroke="#e6a817" stroke-width="0.5"/>
-<text x="46" y="773" text-anchor="start" dominant-baseline="central" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" font-weight="normal" fill="#7d4e00">ℹ  different random start each call → encrypt('h') yields a new ciphertext every time · all decrypt identically</text>
+<rect x="30" y="754" width="616" height="96" rx="4" fill="#ffffff" stroke="#d0d7de" stroke-width="0.5"/>
+<text x="46" y="770" text-anchor="start" dominant-baseline="central" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,sans-serif" font-size="11" font-weight="600" fill="#1f2328">⑤ Anatomy of the full $9$ value</text>
+<rect x="222" y="784" width="50" height="28" rx="4" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1"/>
+<text x="247" y="798" text-anchor="middle" dominant-baseline="central" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="13" font-weight="700" fill="#1f2328">$9$</text>
+<text x="247" y="824" text-anchor="middle" dominant-baseline="central" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,sans-serif" font-size="9" font-weight="normal" fill="#57606a">magic</text>
+<rect x="280" y="784" width="34" height="28" rx="4" fill="#fff0ed" stroke="#ffc1b2" stroke-width="1"/>
+<text x="297" y="798" text-anchor="middle" dominant-baseline="central" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="13" font-weight="700" fill="#9a3520">Q</text>
+<text x="297" y="824" text-anchor="middle" dominant-baseline="central" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,sans-serif" font-size="9" font-weight="normal" fill="#57606a">start</text>
+<rect x="322" y="784" width="64" height="28" rx="4" fill="#ffffff" stroke="#8c959f" stroke-width="1" stroke-dasharray="4 3"/>
+<text x="354" y="798" text-anchor="middle" dominant-baseline="central" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="13" font-weight="700" fill="#8c959f">· · ·</text>
+<text x="354" y="824" text-anchor="middle" dominant-baseline="central" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,sans-serif" font-size="9" font-weight="normal" fill="#57606a">filler ×EXTRA[Q]=3</text>
+<rect x="394" y="784" width="64" height="28" rx="4" fill="#dafbe1" stroke="#82e49a" stroke-width="1"/>
+<text x="426" y="798" text-anchor="middle" dominant-baseline="central" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="13" font-weight="700" fill="#1a7f37">znC</text>
+<text x="426" y="824" text-anchor="middle" dominant-baseline="central" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,sans-serif" font-size="9" font-weight="normal" fill="#57606a">payload = 'h'</text>
+<text x="338" y="840" text-anchor="middle" dominant-baseline="central" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,sans-serif" font-size="9" font-weight="normal" fill="#57606a">filler chars are random and skipped on decrypt · payload grows by 2-4 chars per plaintext byte (weight table)</text>
+<rect x="30" y="858" width="616" height="38" rx="4" fill="#fff3cd" stroke="#e6a817" stroke-width="0.5"/>
+<text x="46" y="877" text-anchor="start" dominant-baseline="central" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" font-weight="normal" fill="#7d4e00">ℹ  different random start each call → encrypt('h') yields a new ciphertext every time · all decrypt identically</text>
 </svg>
