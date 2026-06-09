@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Changed
+
+- CI: updated `actions/checkout` to v6 and `astral-sh/setup-uv` to v8 (Node 24), disabled the unused uv cache.
+
 ## v0.2.0 - 2026-06-09
 
 ### Changed
