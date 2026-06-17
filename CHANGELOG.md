@@ -6,6 +6,10 @@
 
 - CI: updated `actions/checkout` to v6 and `astral-sh/setup-uv` to v8 (Node 24), disabled the unused uv cache.
 
+### Docs
+
+- README: link the browser-based encoder/decoder at [network-secret-decoder.pages.dev](https://network-secret-decoder.pages.dev/).
+
 ## v0.2.0 - 2026-06-09
 
 ### Changed

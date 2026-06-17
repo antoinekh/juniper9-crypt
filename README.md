@@ -9,6 +9,8 @@ Encrypt and decrypt Juniper `$9$` reversible passwords, from the command line or
 
 The `$9$` algorithm is a proprietary Juniper substitution cipher. It is **keyless and device-independent**: a password encrypted on one Juniper device can be decrypted on any other, with no node-specific secret involved. The algorithm and its character set are publicly documented.
 
+> **Prefer a browser?** Encode and decode `$9$` (and `$8$`, and Nokia SR OS custom-hash) at **[network-secret-decoder.pages.dev](https://network-secret-decoder.pages.dev/)**. It runs the same algorithm fully client-side - nothing you type is ever sent to a server.
+
 > `$9$` is a substitution cipher, not real cryptography. Treat it as obfuscation, not protection. Anyone with this library (or the source of any Juniper device) can recover the plaintext.
 
 ## Run without installing
