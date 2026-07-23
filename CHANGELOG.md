@@ -13,7 +13,7 @@
 
 ### Docs
 
-- README: link the browser-based encoder/decoder at [network-secret-website.pages.dev](https://network-secret-website.pages.dev/).
+- README: link the browser-based encoder/decoder at [network-secret.pages.dev](https://network-secret.pages.dev/).
 
 ## v0.2.0 - 2026-06-09
 
