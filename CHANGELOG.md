@@ -1,14 +1,19 @@
 # Changelog
 
-## Unreleased
+## v0.3.0 - 2026-07-23
+
+### Deprecated
+
+- This package is superseded by [network-secret](https://github.com/antoinekh/network-secret), which unifies `juniper9-crypt`, `juniper8-crypt`, and the Nokia SR OS custom-hash cipher. The repository is now read-only; the README carries the migration notice.
 
 ### Changed
 
 - CI: updated `actions/checkout` to v6 and `astral-sh/setup-uv` to v8 (Node 24), disabled the unused uv cache.
+- CI: dropped the redundant `uv python install` step; `uv run --python` installs the interpreter on demand.
 
 ### Docs
 
-- README: link the browser-based encoder/decoder at [network-secret-decoder.pages.dev](https://network-secret-decoder.pages.dev/).
+- README: link the browser-based encoder/decoder at [network-secret-website.pages.dev](https://network-secret-website.pages.dev/).
 
 ## v0.2.0 - 2026-06-09
 

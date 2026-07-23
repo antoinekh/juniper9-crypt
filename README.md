@@ -5,11 +5,16 @@
 [![Python versions](https://img.shields.io/pypi/pyversions/juniper9-crypt)](https://pypi.org/project/juniper9-crypt/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
+> [!IMPORTANT]
+> **This repository is read-only and no longer developed.** Development has moved to **[network-secret](https://github.com/antoinekh/network-secret)**, which brings `juniper9-crypt`, `juniper8-crypt`, and the Nokia SR OS custom-hash cipher together in a single package with a single CLI.
+>
+> Migrating is an import path change and nothing more: `pip install network-secret`, then `from network_secret import juniper9`. The `encrypt()`, `decrypt()`, and `check()` signatures are identical.
+
 Encrypt and decrypt Juniper `$9$` reversible passwords, from the command line or Python.
 
 The `$9$` algorithm is a proprietary Juniper substitution cipher. It is **keyless and device-independent**: a password encrypted on one Juniper device can be decrypted on any other, with no node-specific secret involved. The algorithm and its character set are publicly documented.
 
-> **Prefer a browser?** Encode and decode `$9$` (and `$8$`, and Nokia SR OS custom-hash) at **[network-secret-decoder.pages.dev](https://network-secret-decoder.pages.dev/)**. It runs the same algorithm fully client-side - nothing you type is ever sent to a server.
+> **Prefer a browser?** Encode and decode `$9$` (and `$8$`, and Nokia SR OS custom-hash) at **[network-secret-website.pages.dev](https://network-secret-website.pages.dev/)**. It runs the same algorithm fully client-side - nothing you type is ever sent to a server.
 
 > `$9$` is a substitution cipher, not real cryptography. Treat it as obfuscation, not protection. Anyone with this library (or the source of any Juniper device) can recover the plaintext.
 
